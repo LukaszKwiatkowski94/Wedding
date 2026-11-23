@@ -16,25 +16,22 @@ Oba przyciski pokazują dostępność funkcji: zielony oznacza funkcję aktywną
 
 ### Hero
 
-- Zdjęcie z projektu na całą szerokość, imiona Diana i Łukasz oraz data 26 czerwca 2027.
+- Zdjęcie z projektu na całą szerokość oraz imiona i data wesela wprowadzone w ustawieniach.
 - Wygląd na podstawie [wzoru hero](.mockups/index.htm).
 - Przycisk „Poznaj szczegóły” przewija do sekcji „Gdzie i kiedy”.
 - Bez licznika odliczającego do ślubu.
 
 ### Gdzie i kiedy
 
-Dwie karty zawierają szczegóły wydarzenia i odnośniki otwierające odpowiednie lokalizacje w Google Maps:
+Dwie karty przedstawiają daty, godziny i miejsca ceremonii oraz przyjęcia zapisane w ustawieniach. Jeśli administrator poda adres lub link do mapy, są one również widoczne na stronie.
 
-- Ceremonia: Kościół Miłosierdzia Bożego, Białystok, godz. 16:30.
-- Przyjęcie: Restauracja Belweder, Porosły-Kolonia, godz. 18:00.
-
-Dokładne adresy i docelowe lokalizacje map wymagają uzupełnienia.
+Nazwy miejsc i miejscowości są wymagane podczas konfiguracji; dokładne adresy i linki do map są opcjonalne.
 
 ### Propozycje piosenek
 
 Formularz pozwala podać tytuł piosenki i wykonawcę oraz opcjonalnie imię i dedykację lub komentarz. Po wysłaniu gość otrzymuje potwierdzenie.
 
-Termin zamknięcia jest odczytywany z ustawień w bazie. Planowana wartość początkowa to 20 czerwca 2027; administrator będzie mógł ją zmienić. Do zamknięcia formularz jest widoczny, a przycisk w menu zielony. Po zamknięciu formularz zastępuje ciemnozielona informacja o przekazaniu listy DJ-owi i podziękowanie, a przycisk w menu staje się szary. Dokładna godzina zamknięcia i strefa czasowa wymagają ustalenia przy implementacji.
+Termin zamknięcia ustawia administrator. Do tego momentu formularz będzie widoczny, a przycisk w menu zielony. Po zamknięciu formularz zastąpi ciemnozielona informacja o przekazaniu listy DJ-owi i podziękowanie, a przycisk w menu stanie się szary.
 
 ### Zdjęcia
 
@@ -46,19 +43,11 @@ Planowana jest integracja z OneDrive przez backend albo zapis we własnym backen
 
 ### Timeline znajomości
 
-Oś przedstawia pięć wydarzeń: na komputerze poziomo, a poniżej 640 px pionowo z kropkami.
-
-| Data | Wydarzenie |
-| --- | --- |
-| 26.06.2025 | Poznanie |
-| 19.07.2025 | Pierwsza randka |
-| 11.10.2025 | Początek związku |
-| 12.09.2026 | Zaręczyny |
-| 26.06.2027 | Ślub |
+Planowana oś przedstawi wydarzenia z historii pary z datami i opisami wprowadzanymi przez administratora. Na komputerze będzie pozioma, a poniżej 640 px pionowa z kropkami. Zarządzanie wydarzeniami nie zostało jeszcze wdrożone.
 
 ### Zabawy weselne
 
-Gość może zgłosić nazwę zabawy, jej opis i zasady oraz opcjonalnie swoje imię. Formularz działa do terminu zapisanego w ustawieniach; planowana wartość początkowa to 19 czerwca 2027. Po tym terminie formularz znika.
+Gość będzie mógł zgłosić nazwę zabawy, jej opis i zasady oraz opcjonalnie swoje imię. Formularz będzie dostępny do terminu ustawionego przez administratora; po jego upływie zniknie.
 
 Pod formularzem znajduje się sekcja „Zabawy na weselu”. Gdy nie ma opublikowanych zabaw, wyświetla informację „Wkrótce podamy, jakie zabawy nas czekają”. Po dodaniu zabaw nagłówek zmienia się na „Lista zabaw”, a każdą pozycję można rozwinąć, by przeczytać zasady. Zgłoszenie gościa nie powinno być automatycznie publikowane jako zatwierdzona zabawa.
 
@@ -68,7 +57,7 @@ Do czasu uzupełnienia danych widoczna jest informacja „Menu pojawi się tutaj
 
 ### Harmonogram dnia
 
-Pionowa oś czasu prezentuje ceremonię o 16:30 i przyjęcie o 18:00. Pierwszy taniec, tort i oczepiny mają początkowo oznaczenie „ok. --:--”; godziny będzie można później uzupełnić, np. „ok. 19:00”.
+Planowana pionowa oś czasu przedstawi ceremonię i przyjęcie na podstawie ustawień oraz pozostałe punkty dnia. Godziny dodatkowych punktów, takich jak pierwszy taniec, tort i oczepiny, będzie można później uzupełnić. Zarządzanie harmonogramem nie zostało jeszcze wdrożone.
 
 ### FAQ
 
@@ -101,11 +90,10 @@ Sekrety, hasła i konfiguracja połączeń należą do środowiska produkcyjnego
 
 ## Do uzupełnienia
 
-- Dokładne adresy i odnośniki Google Maps obu miejsc.
-- Godziny pozostałych punktów harmonogramu.
-- Dania, zatwierdzone zabawy i ostateczne odpowiedzi FAQ.
-- Dokładne godziny i strefa czasowa zamknięcia zgłoszeń oraz konfiguracja dostępności zdjęć.
-- Szczegóły integracji i przechowywania zdjęć oraz konfiguracji produkcyjnej.
+- Opcjonalne adresy i linki do map dla miejsc wybranych przez administratora.
+- Planowane zarządzanie historią pary, harmonogramem, menu, zabawami i FAQ.
+- Konfiguracja dostępności zdjęć oraz szczegóły ich integracji i przechowywania.
+- Konfiguracja środowiska produkcyjnego.
 
 ## Technologie
 
