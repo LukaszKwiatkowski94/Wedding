@@ -1,0 +1,42 @@
+services:
+  workspace:
+    image: wedding-workspace:local
+    user: vscode
+    volumes:
+      - .:/workspaces/wedding
+    working_dir: /workspaces/wedding
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_DATABASE: wedding
+      DB_USERNAME: wedding
+      DB_PASSWORD: wedding_local
+      DB_SOCKET: ""
+      DATABASE_URL: ""
+    command: bash .devcontainer/start.sh
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mariadb:10.6
+    environment:
+      MARIADB_DATABASE: wedding
+      MARIADB_USER: wedding
+      MARIADB_PASSWORD: wedding_local
+      MARIADB_ROOT_PASSWORD: root_local
+    volumes:
+      - wedding-db:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$$MARIADB_ROOT_PASSWORD --silent" ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+volumes:
+  wedding-db:

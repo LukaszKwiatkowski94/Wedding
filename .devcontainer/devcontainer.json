@@ -1,0 +1,24 @@
+{
+    "name": "Wedding development",
+    "dockerComposeFile": "../compose.yaml",
+    "service": "workspace",
+    "workspaceFolder": "/workspaces/wedding",
+    "remoteUser": "vscode",
+    "overrideCommand": false,
+    "initializeCommand": "docker compose -f compose.yaml -f .devcontainer/compose.build.yaml build workspace",
+    "forwardPorts": [
+        8000
+    ],
+    "portsAttributes": {
+        "8000": {
+            "label": "Wedding"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client"
+            ]
+        }
+    }
+}
