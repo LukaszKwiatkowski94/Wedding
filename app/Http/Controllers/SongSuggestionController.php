@@ -49,9 +49,9 @@ class SongSuggestionController extends Controller
             return redirect()->route('setup.create');
         }
         if ($result === 'invalid') {
-            return redirect(route('home').'#piosenki')->withErrors($validator, 'songs')->withInput();
+            return redirect(route('home', absolute: false).'#piosenki')->withErrors($validator, 'songs')->withInput();
         }
 
-        return redirect(route('home').'#piosenki')->with('song_status', $result);
+        return redirect(route('home', absolute: false).'#piosenki')->with('song_status', $result);
     }
 }

@@ -15,6 +15,7 @@
                 <a class="admin-home" href="{{ route('home') }}">Zobacz stronę wesela</a>
                 <a class="admin-home" href="{{ route('admin.songs.index') }}">Propozycje piosenek</a>
                 <a class="admin-home" href="{{ route('admin.games.index') }}">Propozycje zabaw</a>
+                <a class="admin-home" href="{{ route('admin.timeline.index') }}">Historia pary</a>
             </div>
             <form action="{{ route('logout') }}" method="post">@csrf<button class="secondary" type="submit">Wyloguj</button></form>
         </div>

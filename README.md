@@ -51,6 +51,10 @@ Gość może zgłosić nazwę zabawy, jej opis i zasady oraz opcjonalnie swoje i
 
 Pod formularzem znajduje się sekcja „Zabawy na weselu”. Gdy nie ma opublikowanych zabaw, wyświetla informację „Wkrótce podamy, jakie zabawy nas czekają”. Po zatwierdzeniu zabaw nagłówek zmienia się na „Lista zabaw”, a każdą pozycję można rozwinąć, by przeczytać zasady. Zgłoszenia nie są publikowane automatycznie, a imię zgłaszającego jest widoczne tylko w panelu administratora.
 
+### Oś historii pary
+
+Administrator dodaje, edytuje i usuwa wydarzenia z datą, tytułem i opcjonalnym opisem w panelu „Historia pary”. Usunięcie wymaga potwierdzenia na osobnym ekranie. Na stronie gości sekcja „Najważniejsze chwile” pokazuje wydarzenia w kolejności dat. Ślub jest dodawany automatycznie na podstawie daty ceremonii z ustawień (czas polski) i nie można go edytować na osi. W tym samym dniu ślub jest wyświetlany jako ostatni.
+
 ### Menu weselne
 
 Do czasu uzupełnienia danych widoczna jest informacja „Menu pojawi się tutaj później”. Gotowe menu będzie podzielone na kategorie: przystawki, zupy, dania główne, desery, tort i napoje.
@@ -75,7 +79,7 @@ Odpowiedzi z mockupu zawierają warianty i placeholdery. Przed publikacją nale�
 
 Tabela `wedding_settings` przechowuje podstawowe dane oraz terminy zamknięcia zgłoszeń. Daty w formularzach podawane są w strefie Europe/Warsaw i zapisywane w UTC. Termin zamknięcia jest momentem, od którego zgłoszenia nie są już przyjmowane. Wartości w bazie są źródłem prawdy po inicjalizacji.
 
-Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek i pobranie ich jako CSV oraz przegląd, publikowanie i cofanie publikacji propozycji zabaw. Usuwanie ani edycja zgłoszeń nie są dostępne, podobnie jak automatyczne przekazanie piosenek DJ-owi. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
+Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek i pobranie ich jako CSV oraz przegląd, publikowanie i cofanie publikacji propozycji zabaw. Usuwanie ani edycja zgłoszeń nie są dostępne, podobnie jak automatyczne przekazanie piosenek DJ-owi. Panel pozwala też zarządzać osią historii pary. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
 
 ## Konfiguracja przed wdrożeniem
 

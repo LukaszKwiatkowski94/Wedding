@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminGameSuggestionController;
 use App\Http\Controllers\AdminSongSuggestionController;
+use App\Http\Controllers\AdminTimelineEventController;
 use App\Http\Controllers\GameSuggestionController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SetupController;
@@ -25,4 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/games', [AdminGameSuggestionController::class, 'index'])->name('admin.games.index');
     Route::patch('/admin/games/{game}/publish', [AdminGameSuggestionController::class, 'publish'])->whereNumber('game')->name('admin.games.publish');
     Route::patch('/admin/games/{game}/unpublish', [AdminGameSuggestionController::class, 'unpublish'])->whereNumber('game')->name('admin.games.unpublish');
+    Route::get('/admin/timeline', [AdminTimelineEventController::class, 'index'])->name('admin.timeline.index');
+    Route::get('/admin/timeline/create', [AdminTimelineEventController::class, 'create'])->name('admin.timeline.create');
+    Route::post('/admin/timeline', [AdminTimelineEventController::class, 'store'])->name('admin.timeline.store');
+    Route::get('/admin/timeline/{event}/edit', [AdminTimelineEventController::class, 'edit'])->whereNumber('event')->name('admin.timeline.edit');
+    Route::put('/admin/timeline/{event}', [AdminTimelineEventController::class, 'update'])->whereNumber('event')->name('admin.timeline.update');
+    Route::get('/admin/timeline/{event}/delete', [AdminTimelineEventController::class, 'confirmDelete'])->whereNumber('event')->name('admin.timeline.delete');
+    Route::delete('/admin/timeline/{event}', [AdminTimelineEventController::class, 'destroy'])->whereNumber('event')->name('admin.timeline.destroy');
 });

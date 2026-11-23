@@ -103,6 +103,21 @@
                 </div>
             </div>
         </section>
+        <section class="timeline-section" id="historia" aria-labelledby="timeline-title">
+            <div class="timeline-inner">
+                <p class="section-label">Nasza historia</p>
+                <h2 id="timeline-title">Najważniejsze chwile</h2>
+                <ol class="timeline" style="--timeline-count: {{ max(count($timeline), 1) }}">
+                    @foreach ($timeline as $entry)
+                    <li class="timeline-item{{ $entry['is_wedding'] ? ' is-wedding' : '' }}">
+                        <time datetime="{{ $entry['date'] }}">{{ $entry['label'] }}</time>
+                        <h3>{{ $entry['title'] }}</h3>
+                        @if ($entry['description'])<p>{{ $entry['description'] }}</p>@endif
+                    </li>
+                    @endforeach
+                </ol>
+            </div>
+        </section>
     </main>
     <footer>{{ $settings->first_name }} i {{ $settings->second_name }}</footer>
 </body>
