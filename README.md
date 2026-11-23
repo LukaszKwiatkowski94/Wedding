@@ -4,7 +4,7 @@ Aplikacja Laravel do przygotowania strony weselnej, którą można dostosować d
 
 ## Status projektu
 
-Obecnie działa podstawowa aplikacja Laravel z bazą MariaDB. Opisane poniżej funkcje strony, tabela ustawień, panel administratora i integracja zdjęć są planowane, nie zostały jeszcze wdrożone.
+Pierwsze uruchomienie obejmuje konfigurację danych wesela, utworzenie administratora, logowanie i edycję ustawień oraz podstawową stronę dla gości. Pozostałe opisane poniżej funkcje, w tym zgłoszenia i integracja zdjęć, są planowane i nie zostały jeszcze wdrożone.
 
 W katalogu [`.mockups`](.mockups/) znajdują się projekt strony, osobny wzór hero i zdjęcie przeznaczone do użycia w hero. Mockup pokazuje wygląd i przykładowe stany, ale sam nie realizuje logiki aplikacji.
 
@@ -84,13 +84,18 @@ Odpowiedzi z mockupu zawierają warianty i placeholdery. Przed publikacją nale�
 
 ## Ustawienia i panel administratora
 
-Planowana tabela `settings` będzie przechowywać m.in. datę i godzinę wesela oraz terminy dostępności formularzy. Daty i stany mają być sprawdzane po stronie serwera, również podczas wysyłania formularzy i zdjęć. Wartości w bazie będą źródłem prawdy po inicjalizacji.
+Tabela `wedding_settings` przechowuje podstawowe dane oraz terminy zamknięcia zgłoszeń. Daty w formularzach podawane są w strefie Europe/Warsaw i zapisywane w UTC. Po wdrożeniu formularzy ich dostępność będzie sprawdzana po stronie serwera; termin zamknięcia jest momentem, od którego zgłoszenia nie będą już przyjmowane. Wartości w bazie są źródłem prawdy po inicjalizacji.
 
-Panel administratora, dostępny po uwierzytelnieniu, ma umożliwiać edycję ustawień i treści strony, przeglądanie zgłoszeń piosenek i zabaw oraz zarządzanie publikowanymi zabawami. Szczegóły pierwszego utworzenia administratora zostaną ustalone przy implementacji; aplikacja nie powinna mieć publicznych domyślnych danych logowania.
+Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, bez ich usuwania. Zarządzanie pozostałą treścią i zgłoszeniami powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
 
 ## Konfiguracja przed wdrożeniem
 
-Planowany proces pierwszego uruchomienia na produkcji pozwoli przygotować podstawowe dane wesela i zainicjalizować nimi pustą bazę. Późniejsze zmiany będą wprowadzane w panelu, a ponowne wdrożenie nie powinno nadpisywać istniejących danych. Sposób przekazania danych początkowych i utworzenia administratora wymaga dopracowania przed wdrożeniem.
+1. Skonfiguruj bazę i klucz aplikacji, a następnie uruchom migracje. Przed migracją istniejącej bazy przygotuj kopię zapasową.
+2. Ustaw `WEDDING_SETUP_SECRET` w środowisku na długi, losowy sekret i uruchom `php artisan config:clear`, jeśli konfiguracja była buforowana. Po zmianie zmiennych środowiska restartuj proces aplikacji, jeśli zachowuje je w pamięci. Na produkcji zapewnij HTTPS i ogranicz dostęp do instalacji do czasu jej ukończenia.
+3. Otwórz `/setup`, podaj sekret, utwórz konto administratora i wprowadź wymagane dane. Adresy i linki do map są opcjonalne. Hasło musi mieć co najmniej 12 znaków.
+4. Po konfiguracji usuń sekret ze środowiska i odśwież cache konfiguracji. `/setup` jest odtąd zamknięty. Ustawienia można zmieniać po zalogowaniu pod `/login`.
+
+Jeśli sekret nie jest ustawiony, setup jest niedostępny. Próby setupu i logowania są ograniczane; na produkcji używaj współdzielonego, trwałego magazynu cache przy wielu instancjach aplikacji. Ponowne wdrożenie i migracje nie nadpisują zapisanych danych. Jeśli baza zawiera tylko użytkownika albo niekompletne ustawienia, konfiguracja nie jest automatycznie wznawiana: operator musi najpierw sprawdzić i naprawić stan bazy.
 
 Sekrety, hasła i konfiguracja połączeń należą do środowiska produkcyjnego, nie do danych publikowanych w repozytorium. Przed wykonaniem migracji na istniejącej bazie należy przygotować kopię zapasową.
 
