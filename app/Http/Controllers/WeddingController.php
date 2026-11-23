@@ -19,7 +19,9 @@ class WeddingController extends Controller
         }
         abort_unless($settings->admin_user_id && User::query()->whereKey($settings->admin_user_id)->exists(), 503);
 
-        return view('wedding', compact('settings'));
+        $songsOpen = now()->lessThan($settings->songs_close_at);
+
+        return view('wedding', compact('settings', 'songsOpen'));
     }
 
     public function edit(Request $request)

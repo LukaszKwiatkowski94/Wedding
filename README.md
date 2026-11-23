@@ -4,7 +4,7 @@ Aplikacja Laravel do przygotowania strony weselnej, którą można dostosować d
 
 ## Status projektu
 
-Pierwsze uruchomienie obejmuje konfigurację danych wesela, utworzenie administratora, logowanie i edycję ustawień oraz podstawową stronę dla gości. Pozostałe opisane poniżej funkcje, w tym zgłoszenia i integracja zdjęć, są planowane i nie zostały jeszcze wdrożone.
+Pierwsze uruchomienie obejmuje konfigurację danych wesela, utworzenie administratora, logowanie i edycję ustawień oraz stronę dla gości z formularzem propozycji piosenek. Pozostałe opisane poniżej funkcje, w tym zgłoszenia zabaw i integracja zdjęć, są planowane i nie zostały jeszcze wdrożone.
 
 W katalogu [`.mockups`](.mockups/) znajdują się projekt strony, osobny wzór hero i zdjęcie przeznaczone do użycia w hero. Mockup pokazuje wygląd i przykładowe stany, ale sam nie realizuje logiki aplikacji.
 
@@ -31,7 +31,7 @@ Nazwy miejsc i miejscowości są wymagane podczas konfiguracji; dokładne adresy
 
 Formularz pozwala podać tytuł piosenki i wykonawcę oraz opcjonalnie imię i dedykację lub komentarz. Po wysłaniu gość otrzymuje potwierdzenie.
 
-Termin zamknięcia ustawia administrator. Do tego momentu formularz będzie widoczny, a przycisk w menu zielony. Po zamknięciu formularz zastąpi ciemnozielona informacja o przekazaniu listy DJ-owi i podziękowanie, a przycisk w menu stanie się szary.
+Termin zamknięcia ustawia administrator. Do tego momentu formularz jest widoczny, a odnośnik w menu zielony. Po zamknięciu formularz zastępuje informacja o zakończeniu zgłoszeń i podziękowanie, a odnośnik w menu staje się szary. Termin jest sprawdzany na serwerze także przy wysyłaniu formularza. Zgłoszenia mogą się powtarzać.
 
 ### Zdjęcia
 
@@ -73,9 +73,9 @@ Odpowiedzi z mockupu zawierają warianty i placeholdery. Przed publikacją nale�
 
 ## Ustawienia i panel administratora
 
-Tabela `wedding_settings` przechowuje podstawowe dane oraz terminy zamknięcia zgłoszeń. Daty w formularzach podawane są w strefie Europe/Warsaw i zapisywane w UTC. Po wdrożeniu formularzy ich dostępność będzie sprawdzana po stronie serwera; termin zamknięcia jest momentem, od którego zgłoszenia nie będą już przyjmowane. Wartości w bazie są źródłem prawdy po inicjalizacji.
+Tabela `wedding_settings` przechowuje podstawowe dane oraz terminy zamknięcia zgłoszeń. Daty w formularzach podawane są w strefie Europe/Warsaw i zapisywane w UTC. Termin zamknięcia jest momentem, od którego zgłoszenia nie są już przyjmowane. Wartości w bazie są źródłem prawdy po inicjalizacji.
 
-Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, bez ich usuwania. Zarządzanie pozostałą treścią i zgłoszeniami powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
+Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek oraz pobranie wszystkich zgłoszeń jako CSV. Usuwanie zgłoszeń ani automatyczne przekazanie ich DJ-owi nie jest dostępne. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
 
 ## Konfiguracja przed wdrożeniem
 
