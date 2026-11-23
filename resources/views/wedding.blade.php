@@ -56,7 +56,7 @@
                         <label for="song-title">Tytuł piosenki<input id="song-title" name="title" value="{{ old('title') }}" maxlength="255" required @if ($errors->songs->has('title')) aria-invalid="true" aria-describedby="song-title-error" @endif>@if ($errors->songs->has('title'))<span class="field-error" id="song-title-error">{{ $errors->songs->first('title') }}</span>@endif</label>
                         <label for="song-artist">Wykonawca<input id="song-artist" name="artist" value="{{ old('artist') }}" maxlength="255" required @if ($errors->songs->has('artist')) aria-invalid="true" aria-describedby="song-artist-error" @endif>@if ($errors->songs->has('artist'))<span class="field-error" id="song-artist-error">{{ $errors->songs->first('artist') }}</span>@endif</label>
                     </div>
-                    <label for="song-guest">Imię <span>(opcjonalnie)</span><input id="song-guest" name="guest_name" value="{{ old('guest_name') }}" maxlength="100" @if ($errors->songs->has('guest_name')) aria-invalid="true" aria-describedby="song-guest-error" @endif>@if ($errors->songs->has('guest_name'))<span class="field-error" id="song-guest-error">{{ $errors->songs->first('guest_name') }}</span>@endif</label>
+                    <label for="song-guest">Imię <span>(opcjonalnie)</span><input id="song-guest" name="guest_name" value="{{ $errors->songs->any() ? old('guest_name') : '' }}" maxlength="100" @if ($errors->songs->has('guest_name')) aria-invalid="true" aria-describedby="song-guest-error" @endif>@if ($errors->songs->has('guest_name'))<span class="field-error" id="song-guest-error">{{ $errors->songs->first('guest_name') }}</span>@endif</label>
                     <label for="song-comment">Dedykacja lub komentarz <span>(opcjonalnie)</span><textarea id="song-comment" name="comment" rows="4" maxlength="2000" @if ($errors->songs->has('comment')) aria-invalid="true" aria-describedby="song-comment-error" @endif>{{ old('comment') }}</textarea>@if ($errors->songs->has('comment'))<span class="field-error" id="song-comment-error">{{ $errors->songs->first('comment') }}</span>@endif</label>
                     <button type="submit">Wyślij propozycję</button>
                 </form>
@@ -66,6 +66,41 @@
                     <p>Dziękujemy za wszystkie zgłoszenia!</p>
                 </div>
                 @endif
+            </div>
+        </section>
+        <section class="game-section" id="zabawy" aria-labelledby="games-title">
+            <div class="game-inner">
+                <p class="section-label">Zaproponuj zabawę weselną</p>
+                <h2 id="games-title">Masz pomysł na zabawę?</h2>
+                @if (session('game_status') === 'saved')<p class="song-notice" role="status">Dziękujemy! Twoja propozycja trafiła do nas.</p>@endif
+                @if ($gamesOpen)
+                <p class="game-intro">Czekamy na propozycje do {{ $settings->games_close_at->setTimezone(config('wedding.timezone'))->locale('pl')->translatedFormat('j F Y, H:i') }}.</p>
+                @if (session('game_status') === 'closed')<p class="song-notice" role="status">Zgłoszenia zostały ponownie otwarte.</p>@endif
+                @if ($errors->games->any())<p class="song-error-summary" role="alert">Sprawdź zaznaczone pola i spróbuj ponownie.</p>@endif
+                <form class="song-form" method="post" action="{{ route('games.store') }}">
+                    @csrf
+                    <label for="game-name">Nazwa zabawy<input id="game-name" name="name" value="{{ old('name') }}" maxlength="255" required @if ($errors->games->has('name')) aria-invalid="true" aria-describedby="game-name-error" @endif>@if ($errors->games->has('name'))<span class="field-error" id="game-name-error">{{ $errors->games->first('name') }}</span>@endif</label>
+                    <label for="game-description">Opis i zasady<textarea id="game-description" name="description" rows="4" maxlength="5000" required @if ($errors->games->has('description')) aria-invalid="true" aria-describedby="game-description-error" @endif>{{ old('description') }}</textarea>@if ($errors->games->has('description'))<span class="field-error" id="game-description-error">{{ $errors->games->first('description') }}</span>@endif</label>
+                    <label for="game-guest">Imię <span>(opcjonalnie)</span><input id="game-guest" name="guest_name" value="{{ $errors->games->any() ? old('guest_name') : '' }}" maxlength="100" @if ($errors->games->has('guest_name')) aria-invalid="true" aria-describedby="game-guest-error" @endif>@if ($errors->games->has('guest_name'))<span class="field-error" id="game-guest-error">{{ $errors->games->first('guest_name') }}</span>@endif</label>
+                    <button type="submit">Prześlij pomysł</button>
+                </form>
+                @else
+                <p class="game-closed" role="status">Przyjmowanie propozycji zabaw zostało zakończone. Dziękujemy za zgłoszenia!</p>
+                @endif
+                <div class="game-list">
+                    @if ($games->isEmpty())
+                    <h3>Zabawy na weselu</h3>
+                    <p>Wkrótce podamy, jakie zabawy nas czekają.</p>
+                    @else
+                    <h3>Lista zabaw</h3>
+                    @foreach ($games as $game)
+                    <details>
+                        <summary>{{ $game->name }}</summary>
+                        <p>{{ $game->description }}</p>
+                    </details>
+                    @endforeach
+                    @endif
+                </div>
             </div>
         </section>
     </main>

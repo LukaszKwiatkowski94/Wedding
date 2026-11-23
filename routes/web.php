@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminGameSuggestionController;
 use App\Http\Controllers\AdminSongSuggestionController;
+use App\Http\Controllers\GameSuggestionController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\SongSuggestionController;
@@ -9,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WeddingController::class, 'show'])->name('home');
 Route::post('/songs', [SongSuggestionController::class, 'store'])->middleware('throttle:song-suggestions')->name('songs.store');
+Route::post('/games', [GameSuggestionController::class, 'store'])->middleware('throttle:game-suggestions')->name('games.store');
 Route::get('/setup', [SetupController::class, 'create'])->name('setup.create');
 Route::post('/setup', [SetupController::class, 'store'])->middleware('throttle:5,1')->name('setup.store');
 Route::get('/login', [SessionController::class, 'create'])->name('login');
@@ -19,4 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/settings', [WeddingController::class, 'update'])->name('settings.update');
     Route::get('/admin/songs', [AdminSongSuggestionController::class, 'index'])->name('admin.songs.index');
     Route::get('/admin/songs/export', [AdminSongSuggestionController::class, 'export'])->name('admin.songs.export');
+    Route::get('/admin/games', [AdminGameSuggestionController::class, 'index'])->name('admin.games.index');
+    Route::patch('/admin/games/{game}/publish', [AdminGameSuggestionController::class, 'publish'])->whereNumber('game')->name('admin.games.publish');
+    Route::patch('/admin/games/{game}/unpublish', [AdminGameSuggestionController::class, 'unpublish'])->whereNumber('game')->name('admin.games.unpublish');
 });

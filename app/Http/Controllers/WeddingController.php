@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WeddingData;
+use App\Models\GameSuggestion;
 use App\Models\User;
 use App\Models\WeddingSettings;
 use Illuminate\Http\Request;
@@ -20,8 +21,10 @@ class WeddingController extends Controller
         abort_unless($settings->admin_user_id && User::query()->whereKey($settings->admin_user_id)->exists(), 503);
 
         $songsOpen = now()->lessThan($settings->songs_close_at);
+        $gamesOpen = now()->lessThan($settings->games_close_at);
+        $games = GameSuggestion::query()->whereNotNull('published_at')->orderBy('published_at')->orderBy('id')->get();
 
-        return view('wedding', compact('settings', 'songsOpen'));
+        return view('wedding', compact('settings', 'songsOpen', 'gamesOpen', 'games'));
     }
 
     public function edit(Request $request)

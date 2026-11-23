@@ -4,7 +4,7 @@ Aplikacja Laravel do przygotowania strony weselnej, którą można dostosować d
 
 ## Status projektu
 
-Pierwsze uruchomienie obejmuje konfigurację danych wesela, utworzenie administratora, logowanie i edycję ustawień oraz stronę dla gości z formularzem propozycji piosenek. Pozostałe opisane poniżej funkcje, w tym zgłoszenia zabaw i integracja zdjęć, są planowane i nie zostały jeszcze wdrożone.
+Pierwsze uruchomienie obejmuje konfigurację danych wesela, utworzenie administratora, logowanie i edycję ustawień oraz stronę dla gości z formularzami propozycji piosenek i zabaw. Pozostałe opisane poniżej funkcje, w tym integracja zdjęć, są planowane i nie zostały jeszcze wdrożone.
 
 W katalogu [`.mockups`](.mockups/) znajdują się projekt strony, osobny wzór hero i zdjęcie przeznaczone do użycia w hero. Mockup pokazuje wygląd i przykładowe stany, ale sam nie realizuje logiki aplikacji.
 
@@ -47,9 +47,9 @@ Planowana oś przedstawi wydarzenia z historii pary z datami i opisami wprowadza
 
 ### Zabawy weselne
 
-Gość będzie mógł zgłosić nazwę zabawy, jej opis i zasady oraz opcjonalnie swoje imię. Formularz będzie dostępny do terminu ustawionego przez administratora; po jego upływie zniknie.
+Gość może zgłosić nazwę zabawy, jej opis i zasady oraz opcjonalnie swoje imię. Formularz jest dostępny do terminu ustawionego przez administratora; termin jest sprawdzany również po stronie serwera. Po jego upływie formularz znika, a opublikowane zabawy pozostają widoczne.
 
-Pod formularzem znajduje się sekcja „Zabawy na weselu”. Gdy nie ma opublikowanych zabaw, wyświetla informację „Wkrótce podamy, jakie zabawy nas czekają”. Po dodaniu zabaw nagłówek zmienia się na „Lista zabaw”, a każdą pozycję można rozwinąć, by przeczytać zasady. Zgłoszenie gościa nie powinno być automatycznie publikowane jako zatwierdzona zabawa.
+Pod formularzem znajduje się sekcja „Zabawy na weselu”. Gdy nie ma opublikowanych zabaw, wyświetla informację „Wkrótce podamy, jakie zabawy nas czekają”. Po zatwierdzeniu zabaw nagłówek zmienia się na „Lista zabaw”, a każdą pozycję można rozwinąć, by przeczytać zasady. Zgłoszenia nie są publikowane automatycznie, a imię zgłaszającego jest widoczne tylko w panelu administratora.
 
 ### Menu weselne
 
@@ -75,7 +75,7 @@ Odpowiedzi z mockupu zawierają warianty i placeholdery. Przed publikacją nale�
 
 Tabela `wedding_settings` przechowuje podstawowe dane oraz terminy zamknięcia zgłoszeń. Daty w formularzach podawane są w strefie Europe/Warsaw i zapisywane w UTC. Termin zamknięcia jest momentem, od którego zgłoszenia nie są już przyjmowane. Wartości w bazie są źródłem prawdy po inicjalizacji.
 
-Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek oraz pobranie wszystkich zgłoszeń jako CSV. Usuwanie zgłoszeń ani automatyczne przekazanie ich DJ-owi nie jest dostępne. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
+Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek i pobranie ich jako CSV oraz przegląd, publikowanie i cofanie publikacji propozycji zabaw. Usuwanie ani edycja zgłoszeń nie są dostępne, podobnie jak automatyczne przekazanie piosenek DJ-owi. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
 
 ## Konfiguracja przed wdrożeniem
 
@@ -91,7 +91,7 @@ Sekrety, hasła i konfiguracja połączeń należą do środowiska produkcyjnego
 ## Do uzupełnienia
 
 - Opcjonalne adresy i linki do map dla miejsc wybranych przez administratora.
-- Planowane zarządzanie historią pary, harmonogramem, menu, zabawami i FAQ.
+- Planowane zarządzanie historią pary, harmonogramem, menu i FAQ.
 - Konfiguracja dostępności zdjęć oraz szczegóły ich integracji i przechowywania.
 - Konfiguracja środowiska produkcyjnego.
 

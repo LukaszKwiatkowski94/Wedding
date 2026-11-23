@@ -383,6 +383,102 @@ textarea {
     margin-top: 8px;
 }
 
+.game-section {
+    scroll-margin-top: 100px;
+    padding: 96px 24px;
+    background: var(--forest);
+    color: #fff;
+}
+
+.game-inner {
+    width: min(100%, 1040px);
+    margin: 0 auto;
+}
+
+.game-section .section-label {
+    color: #f1b6a0;
+}
+
+.game-section h2 {
+    margin: 16px 0;
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.12;
+}
+
+.game-intro {
+    margin: 0 0 28px;
+    color: #f7d4c6;
+    line-height: 1.7;
+}
+
+.game-section .song-form {
+    color: var(--forest-deep);
+}
+
+.game-closed {
+    max-width: 720px;
+    padding: 18px 20px;
+    border-left: 3px solid var(--coral);
+    background: #254c40;
+    line-height: 1.6;
+}
+
+.game-list {
+    max-width: 720px;
+    margin-top: 48px;
+}
+
+.game-list h3 {
+    margin: 0 0 18px;
+    color: #f1b6a0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.game-list>p {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.4;
+}
+
+.game-list details {
+    border-top: 1px solid rgb(255 255 255 / 35%);
+    padding: 20px 0;
+    overflow-wrap: anywhere;
+}
+
+.game-list details:last-child {
+    border-bottom: 1px solid rgb(255 255 255 / 35%);
+}
+
+.game-list summary {
+    cursor: pointer;
+    font-family: var(--serif);
+    font-size: 22px;
+}
+
+.game-list details p {
+    margin: 12px 0 0;
+    color: #e2ede6;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.game-status {
+    margin: 10px 0 0;
+    color: var(--forest);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.game-moderation {
+    margin-top: 16px;
+}
+
 .admin-home+.admin-home {
     margin-left: 20px;
 }
@@ -609,6 +705,14 @@ footer {
 }
 
 @media (max-width: 640px) {
+    .game-section {
+        padding: 70px 24px;
+    }
+
+    .game-section h2 {
+        font-size: 36px;
+    }
+
     .site-nav {
         gap: 10px;
         padding: 10px 16px;

@@ -14,6 +14,7 @@
                 <h1>Ustawienia wesela</h1>
                 <a class="admin-home" href="{{ route('home') }}">Zobacz stronę wesela</a>
                 <a class="admin-home" href="{{ route('admin.songs.index') }}">Propozycje piosenek</a>
+                <a class="admin-home" href="{{ route('admin.games.index') }}">Propozycje zabaw</a>
             </div>
             <form action="{{ route('logout') }}" method="post">@csrf<button class="secondary" type="submit">Wyloguj</button></form>
         </div>
