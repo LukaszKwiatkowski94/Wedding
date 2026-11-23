@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#183b34">
+    <meta name="description" content="Diana i Łukasz zapraszają na swoje wesele 26 czerwca 2027 roku.">
+    <title>Diana i Łukasz | 26 czerwca 2027</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --forest: #183b34;
+            --forest-deep: #102b27;
+            --paper: #f7f7f2;
+            --white: #fff;
+            --coral: #e58b72;
+            --muted: #64736d;
+            --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+            --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--forest-deep);
+            background: var(--paper);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            min-height: min(850px, 94vh);
+            min-height: min(850px, 94svh);
+            place-items: center;
+            overflow: hidden;
+            padding: 72px 24px 104px;
+            color: var(--white);
+            text-align: center;
+            background-color: var(--forest-deep);
+            background-image:
+                linear-gradient(180deg, rgb(13 31 28 / 30%) 0%, rgb(13 31 28 / 20%) 42%, rgb(13 31 28 / 72%) 100%),
+                url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2400&q=85");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .hero::after {
+            position: absolute;
+            inset: 18px;
+            border: 1px solid rgb(255 255 255 / 38%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 900px);
+            animation: arrive 900ms ease-out both;
+        }
+
+        .eyebrow,
+        .section-label {
+            margin: 0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            line-height: 1.6;
+            text-transform: uppercase;
+        }
+
+        .eyebrow {
+            color: #f7d4c6;
+        }
+
+        h1 {
+            margin: 27px 0 23px;
+            font-family: var(--serif);
+            font-size: 112px;
+            font-weight: 400;
+            line-height: 0.94;
+        }
+
+        h1 span {
+            display: block;
+            margin: 10px 0 9px;
+            color: #f1b6a0;
+            font-size: 0.56em;
+            font-style: italic;
+            line-height: 1;
+        }
+
+        .hero-note {
+            max-width: 470px;
+            margin: 0 auto;
+            font-family: var(--serif);
+            font-size: 24px;
+            line-height: 1.45;
+        }
+
+        .hero-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 40px;
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero-date::before,
+        .hero-date::after {
+            width: 30px;
+            height: 1px;
+            background: var(--coral);
+            content: "";
+        }
+
+        main {
+            overflow: hidden;
+        }
+
+        .welcome {
+            display: grid;
+            grid-template-columns: minmax(150px, 0.7fr) minmax(0, 1.3fr);
+            gap: clamp(36px, 8vw, 120px);
+            align-items: center;
+            width: min(100% - 48px, 1040px);
+            margin: 0 auto;
+            padding: clamp(72px, 11vw, 142px) 0;
+        }
+
+        .monogram {
+            display: grid;
+            width: min(100%, 230px);
+            aspect-ratio: 1;
+            place-items: center;
+            border: 1px solid #c6d0c6;
+            border-radius: 50%;
+            color: var(--forest);
+            font-family: var(--serif);
+            font-size: 84px;
+            font-style: italic;
+        }
+
+        .monogram span {
+            color: var(--coral);
+            font-size: 0.55em;
+        }
+
+        .section-label {
+            color: #668075;
+        }
+
+        h2 {
+            margin: 16px 0 20px;
+            font-family: var(--serif);
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.05;
+        }
+
+        .welcome-copy p:last-child {
+            max-width: 550px;
+            margin: 0;
+            color: #52635c;
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .details {
+            padding: clamp(70px, 9vw, 104px) 24px;
+            color: var(--white);
+            background: var(--forest);
+        }
+
+        .details-inner {
+            width: min(100%, 980px);
+            margin: 0 auto;
+        }
+
+        .details .section-label {
+            color: #f1b6a0;
+        }
+
+        .details h2 {
+            margin-bottom: 42px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            border-top: 1px solid rgb(255 255 255 / 25%);
+        }
+
+        .detail-item {
+            min-height: 155px;
+            padding: 26px 26px 18px 0;
+        }
+
+        .detail-item+.detail-item {
+            padding-left: 32px;
+            border-left: 1px solid rgb(255 255 255 / 25%);
+        }
+
+        .detail-item h3 {
+            margin: 0 0 11px;
+            color: #f1b6a0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .detail-item p {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: 28px;
+            line-height: 1.35;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: min(100% - 48px, 1040px);
+            margin: 0 auto;
+            padding: 25px 0 30px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes arrive {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                min-height: 78vh;
+                min-height: 78svh;
+                padding: 64px 28px 80px;
+                background-position: 58% center;
+            }
+
+            .hero::after {
+                inset: 12px;
+            }
+
+            h1 {
+                font-size: 62px;
+            }
+
+            .hero-note {
+                font-size: 19px;
+            }
+
+            .hero-date {
+                gap: 10px;
+                margin-top: 31px;
+                font-size: 10px;
+            }
+
+            .hero-date::before,
+            .hero-date::after {
+                width: 20px;
+            }
+
+            .welcome {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                width: min(100% - 48px, 480px);
+                padding: 72px 0 80px;
+            }
+
+            .monogram {
+                width: 120px;
+                font-size: 47px;
+            }
+
+            h2 {
+                font-size: 42px;
+            }
+
+            .detail-item p {
+                font-size: 23px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-item {
+                min-height: 0;
+                padding: 22px 0;
+            }
+
+            .detail-item+.detail-item {
+                padding-left: 0;
+                border-top: 1px solid rgb(255 255 255 / 25%);
+                border-left: 0;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 6px;
+                width: min(100% - 48px, 480px);
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            h1 {
+                font-size: 88px;
+            }
+
+            h2 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Z radością zapraszamy</p>
+            <h1>Diana <span>&amp;</span> Łukasz</h1>
+            <p class="hero-note">Będzie nam ogromnie miło świętować ten dzień razem z Wami.</p>
+            <p class="hero-date">26 czerwca 2027</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome" aria-labelledby="welcome-title">
+            <div class="monogram" aria-hidden="true">D<span>&amp;</span>Ł</div>
+            <div class="welcome-copy">
+                <p class="section-label">Zapiszcie tę datę</p>
+                <h2 id="welcome-title">Zaczyna się nasz wspólny rozdział</h2>
+                <p>26 czerwca 2027 roku powiemy sobie „tak”. Chcemy dzielić tę radość z najbliższymi, dlatego już dziś
+                    zapraszamy Was do wspólnego świętowania.</p>
+            </div>
+        </section>
+
+        <section class="details" aria-labelledby="details-title">
+            <div class="details-inner">
+                <p class="section-label">Najważniejsze informacje</p>
+                <h2 id="details-title">Do zobaczenia</h2>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <h3>Data</h3>
+                        <p>Sobota, 26 czerwca 2027</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>Miejsce i szczegóły</h3>
+                        <p>Podamy wkrótce</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Diana i Łukasz</p>
+        <p>26 czerwca 2027</p>
+    </footer>
+</body>
+
+</html>

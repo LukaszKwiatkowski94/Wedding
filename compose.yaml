@@ -4,6 +4,8 @@ services:
     user: vscode
     volumes:
       - .:/workspaces/wedding
+    ports:
+      - "127.0.0.1:8000:8000"
     working_dir: /workspaces/wedding
     environment:
       APP_ENV: local

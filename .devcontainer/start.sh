@@ -13,6 +13,6 @@ if ! grep -Eq '^APP_KEY=.+$' .env; then
 fi
 
 npm ci
-npm run dev
+npm run build
 
 exec php artisan serve --host=0.0.0.0 --port=8000 --no-reload
