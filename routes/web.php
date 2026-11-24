@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminGameSuggestionController;
+use App\Http\Controllers\AdminMenuController;
 use App\Http\Controllers\AdminSongSuggestionController;
 use App\Http\Controllers\AdminTimelineEventController;
 use App\Http\Controllers\GameSuggestionController;
@@ -33,4 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/timeline/{event}', [AdminTimelineEventController::class, 'update'])->whereNumber('event')->name('admin.timeline.update');
     Route::get('/admin/timeline/{event}/delete', [AdminTimelineEventController::class, 'confirmDelete'])->whereNumber('event')->name('admin.timeline.delete');
     Route::delete('/admin/timeline/{event}', [AdminTimelineEventController::class, 'destroy'])->whereNumber('event')->name('admin.timeline.destroy');
+    Route::get('/admin/menu', [AdminMenuController::class, 'index'])->name('admin.menu.index');
+    Route::post('/admin/menu/categories', [AdminMenuController::class, 'storeCategory'])->name('admin.menu.categories.store');
+    Route::put('/admin/menu/categories/{category}', [AdminMenuController::class, 'updateCategory'])->whereNumber('category')->name('admin.menu.categories.update');
+    Route::delete('/admin/menu/categories/{category}', [AdminMenuController::class, 'destroyCategory'])->whereNumber('category')->name('admin.menu.categories.destroy');
+    Route::patch('/admin/menu/categories/{category}/{direction}', [AdminMenuController::class, 'moveCategory'])->whereNumber('category')->whereIn('direction', ['up', 'down'])->name('admin.menu.categories.move');
+    Route::post('/admin/menu/items', [AdminMenuController::class, 'storeItem'])->name('admin.menu.items.store');
+    Route::put('/admin/menu/items/{item}', [AdminMenuController::class, 'updateItem'])->whereNumber('item')->name('admin.menu.items.update');
+    Route::delete('/admin/menu/items/{item}', [AdminMenuController::class, 'destroyItem'])->whereNumber('item')->name('admin.menu.items.destroy');
+    Route::patch('/admin/menu/items/{item}/{direction}', [AdminMenuController::class, 'moveItem'])->whereNumber('item')->whereIn('direction', ['up', 'down'])->name('admin.menu.items.move');
 });

@@ -57,7 +57,7 @@ Administrator dodaje, edytuje i usuwa wydarzenia z datą, tytułem i opcjonalnym
 
 ### Menu weselne
 
-Do czasu uzupełnienia danych widoczna jest informacja „Menu pojawi się tutaj później”. Gotowe menu będzie podzielone na kategorie: przystawki, zupy, dania główne, desery, tort i napoje.
+Administrator tworzy własne kategorie menu i dodaje do nich pozycje. Dla kategorii i dań ustala kolejność przesuwaniem góra/dół. Każda pozycja ma nazwę i opcjonalny opis lub składniki. Strona gości pokazuje gotowe menu pogrupowane i uporządkowane według ustawień administratora, bez formularza wyboru dań. Gdy nie ma kategorii ani pozycji, wyświetlana jest informacja „Menu pojawi się tutaj później”.
 
 ### Harmonogram dnia
 
@@ -79,7 +79,7 @@ Odpowiedzi z mockupu zawierają warianty i placeholdery. Przed publikacją nale�
 
 Tabela `wedding_settings` przechowuje podstawowe dane oraz terminy zamknięcia zgłoszeń. Daty w formularzach podawane są w strefie Europe/Warsaw i zapisywane w UTC. Termin zamknięcia jest momentem, od którego zgłoszenia nie są już przyjmowane. Wartości w bazie są źródłem prawdy po inicjalizacji.
 
-Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek i pobranie ich jako CSV oraz przegląd, publikowanie i cofanie publikacji propozycji zabaw. Usuwanie ani edycja zgłoszeń nie są dostępne, podobnie jak automatyczne przekazanie piosenek DJ-owi. Panel pozwala też zarządzać osią historii pary. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
+Panel administratora dostępny po zalogowaniu umożliwia edycję podstawowych ustawień, przegląd propozycji piosenek i pobranie ich jako CSV oraz przegląd, publikowanie i cofanie publikacji propozycji zabaw. Usuwanie ani edycja zgłoszeń nie są dostępne, podobnie jak automatyczne przekazanie piosenek DJ-owi. Panel pozwala też zarządzać osią historii pary i menu weselnym z własnymi kategoriami oraz kolejnością dań. Zarządzanie pozostałą treścią powstanie w kolejnych etapach. Nie ma publicznej rejestracji ani domyślnego konta administratora.
 
 ## Konfiguracja przed wdrożeniem
 
@@ -95,7 +95,7 @@ Sekrety, hasła i konfiguracja połączeń należą do środowiska produkcyjnego
 ## Do uzupełnienia
 
 - Opcjonalne adresy i linki do map dla miejsc wybranych przez administratora.
-- Planowane zarządzanie historią pary, harmonogramem, menu i FAQ.
+- Planowane zarządzanie harmonogramem i FAQ.
 - Konfiguracja dostępności zdjęć oraz szczegóły ich integracji i przechowywania.
 - Konfiguracja środowiska produkcyjnego.
 

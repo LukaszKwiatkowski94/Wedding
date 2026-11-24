@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WeddingData;
 use App\Models\GameSuggestion;
+use App\Models\MenuCategory;
 use App\Models\TimelineEvent;
 use App\Models\User;
 use App\Models\WeddingSettings;
@@ -26,8 +27,9 @@ class WeddingController extends Controller
         $gamesOpen = now()->lessThan($settings->games_close_at);
         $games = GameSuggestion::query()->whereNotNull('published_at')->orderBy('published_at')->orderBy('id')->get();
         $timeline = $this->timeline($settings);
+        $menuCategories = MenuCategory::query()->with(['items'])->orderBy('position')->orderBy('id')->get();
 
-        return view('wedding', compact('settings', 'songsOpen', 'gamesOpen', 'games', 'timeline'));
+        return view('wedding', compact('settings', 'songsOpen', 'gamesOpen', 'games', 'timeline', 'menuCategories'));
     }
 
     public function edit(Request $request)

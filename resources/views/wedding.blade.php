@@ -103,6 +103,31 @@
                 </div>
             </div>
         </section>
+        <section class="menu-section" id="menu" aria-labelledby="menu-title">
+            <div class="menu-inner">
+                <p class="section-label">Menu weselne</p>
+                <h2 id="menu-title">Co serwujemy</h2>
+                @if ($menuCategories->isEmpty())
+                <p class="menu-empty">Menu pojawi się tutaj później.</p>
+                @else
+                <div class="menu-categories">
+                    @foreach ($menuCategories as $category)
+                    <section class="menu-category" aria-labelledby="menu-category-{{ $category->id }}">
+                        <h3 id="menu-category-{{ $category->id }}">{{ $category->name }}</h3>
+                        <ol class="menu-items">
+                            @foreach ($category->items as $item)
+                            <li>
+                                <span class="menu-item-name">{{ $item->name }}</span>
+                                @if ($item->description)<p>{{ $item->description }}</p>@endif
+                            </li>
+                            @endforeach
+                        </ol>
+                    </section>
+                    @endforeach
+                </div>
+                @endif
+            </div>
+        </section>
         <section class="timeline-section" id="historia" aria-labelledby="timeline-title">
             <div class="timeline-inner">
                 <p class="section-label">Nasza historia</p>
